@@ -6,10 +6,12 @@ const Application = require("../models/application.model");
 
 const { cloudinary } = require("../cloudinary/cloudinary.config");
 const Approve = require("../models/approved.model");
+
 // Get application by ID
 const getAllApplication = async (req, res, next) => {
   let applicant = await Application.find();
 
+  console.log(applicant);
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
@@ -20,15 +22,17 @@ const getAllApplication = async (req, res, next) => {
 
 const getApplicationById = async (req, res, next) => {
   const { id } = req.params;
+  let approvedStatus;
   try {
-    let approvedStatus = await Approve.findOne({ studentID: id });
+    approvedStatus = await Approve.findOne({ studentID: id });
   } catch (error) {
     return next(
       new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
     );
   }
+  let applicant;
   try {
-    let applicant = await Application.findOne({ _id: id });
+    applicant = await Application.findOne({ _id: id });
   } catch (error) {
     return next(
       new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
@@ -163,7 +167,7 @@ const approve = async (req, res, next) => {
     console.log(err);
     return next(new ErrorResponse("Email could not be sent", 500));
   }
-  res.send(approve);
+  res.redirect("/applications");
 };
 
 module.exports = {
