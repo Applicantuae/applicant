@@ -128,7 +128,7 @@ const createApplicaton = async (req, res, next) => {
     console.log(err);
     return next(new ErrorResponse("Email could not be sent", 500));
   }
-  return res.redirect(`/application/${url}`);
+  res.render("thank");
   // res.send(applicant);
 };
 
