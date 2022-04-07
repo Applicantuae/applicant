@@ -15,8 +15,6 @@ const flash = require("connect-flash");
 
 const cookieParser = require("cookie-parser");
 
-
-
 const mongoSanitize = require("express-mongo-sanitize");
 const errorHandler = require("./middleware/errors");
 const catchAsync = require("./utility/catchAsync");
@@ -28,15 +26,6 @@ const applicationRoute = require("./routes/application.route");
 dotenv.config({ path: "./config/config.env" });
 
 const MongoStore = require("connect-mongo");
-
-
-
-
-
-
-
-
-
 
 const db = require("./config/db");
 db();
@@ -60,8 +49,15 @@ app.use(
   })
 );
 
+app.use(function (e, req, res, next) {
+  if (e.message === "Bad request") {
+    res.status(400).json({ error: { msg: e.message, stack: e.stack } });
+  }
+});
 app.use("/", applicationRoute); // put this mounting route last.. or before error handler like this
-
+app.all("*", function (req, res) {
+  throw new Error("The url is no Valid, Please use correct url. Thanks");
+});
 // This is mystry I need add this on project
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));

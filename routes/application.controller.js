@@ -20,10 +20,20 @@ const getAllApplication = async (req, res, next) => {
 
 const getApplicationById = async (req, res, next) => {
   const { id } = req.params;
-
-  let approvedStatus = await Approve.findOne({ studentID: id });
-
-  let applicant = await Application.findOne({ _id: id });
+  try {
+    let approvedStatus = await Approve.findOne({ studentID: id });
+  } catch (error) {
+    return next(
+      new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
+    );
+  }
+  try {
+    let applicant = await Application.findOne({ _id: id });
+  } catch (error) {
+    return next(
+      new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
+    );
+  }
 
   if (!approvedStatus) {
     approvedStatus = "notDecided";
