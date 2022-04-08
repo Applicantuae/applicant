@@ -4,7 +4,7 @@
   "description": "Only private login System",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Mohiuddin2/privatelogin#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
     "cloudinary": "^1.29.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
@@ -26,7 +27,7 @@
     "ejs": "^3.1.6",
     "ejs-lint": "^1.2.1",
     "ejs-mate": "^3.0.0",
-    "express": "^4.17.2",
+    "express": "^4.17.3",
     "express-mongo-sanitize": "^2.2.0",
     "express-session": "^1.17.2",
     "formidable": "^2.0.1",
@@ -35,6 +36,7 @@
     "mongoose": "^6.1.6",
     "multer": "^1.4.4",
     "multer-storage-cloudinary": "^4.0.0",
+    "mysql": "^2.18.1",
     "nodemailer": "^6.7.2",
     "speakeasy": "^2.0.0",
     "svg-country-flags": "^1.2.10"

@@ -117,7 +117,8 @@ padding: 0px;" class="col-lg-8 col-xs-12 col-centered rounded mb-2">
 
                     <div class="form-group col-md-6 mt-1 rounded p-2">
                         <h6><b>Applicant Image</b></h6>
-                        <img class="rounded" src=<%=applicant.profile_picture[0].imageUrl %> alt="...">
+                        <embed src=<%=applicant.transcript[0].imageUrl %> type="application/pdf" width="100%"
+                        height="600px" />
 
                     </div>
                     <div class="form-group col-md-6 mt-1 rounded p-2">
@@ -127,11 +128,14 @@ padding: 0px;" class="col-lg-8 col-xs-12 col-centered rounded mb-2">
                     </div>
                     <div class="form-group col-md-6 mt-1 rounded p-2">
                         <h6><b>Diploma :</b></h6>
-                        <img class="rounded" src=<%=applicant.diploma[0].imageUrl %> alt="...">
+                        <embed src=<%=applicant.transcript[0].imageUrl %> type="application/pdf" width="100%"
+                        height="600px" />
                     </div>
                     <div class="form-group col-md-6 mt-1 rounded p-2">
                         <h6><b>Transcript :</b></h6>
-                        <img class="rounded" src=<%=applicant.transcript[0].imageUrl %> alt="...">
+                        <embed src=<%=applicant.transcript[0].imageUrl %> type="application/pdf" width="100%"
+                        height="600px" />
+                        <!-- <img class="rounded" src=<%=applicant.transcript[0].imageUrl %> alt="..."> -->
 
                     </div>
 
