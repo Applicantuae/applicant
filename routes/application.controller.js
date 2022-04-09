@@ -11,7 +11,7 @@ const Approve = require("../models/approved.model");
 const getAllApplication = async (req, res, next) => {
   let applicant = await Application.find();
 
-  console.log(applicant);
+  // console.log(applicant);
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
@@ -77,15 +77,6 @@ const createApplicaton = async (req, res, next) => {
     passport_date_of_expire,
   } = req.body;
 
-  // console.log(req.files.profile_picture[0].path);
-  // const a = profile_picture[0].path
-  // const application = await Files.create({
-  //   profile_picture: [{ imageUrl: req.files.profile_picture[0].path }],
-  //   passport: [{ imageUrl: req.files.profile_picture[0].path }],
-  //   diploma: [{ imageUrl: req.files.profile_picture[0].path }],
-  //   transcript: [{ imageUrl: req.files.profile_picture[0].path }],
-  // });
-
   const findEmail = await Application.findOne({ email });
 
   if (findEmail) {
@@ -111,9 +102,9 @@ const createApplicaton = async (req, res, next) => {
     passport_date_of_expire,
     status,
     profile_picture: [{ imageUrl: req.files.profile_picture[0].path }],
-    passport: [{ imageUrl: req.files.profile_picture[0].path }],
-    diploma: [{ imageUrl: req.files.profile_picture[0].path }],
-    transcript: [{ imageUrl: req.files.profile_picture[0].path }],
+    passport: [{ imageUrl: req.files.passport[0].path }],
+    diploma: [{ imageUrl: req.files.diploma[0].path }],
+    transcript: [{ imageUrl: req.files.transcript[0].path }],
   });
 
   // console.log("Applicatant:.......", applicant);
