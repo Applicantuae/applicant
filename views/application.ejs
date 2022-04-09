@@ -396,8 +396,6 @@
                                                         <select name="nationality" class="form-control" required>
                                                             <option value="">Select Country</option>
 
-
-
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
                                                             <option value="Algeria">Algeria</option>
@@ -973,58 +971,91 @@
                                                         <input type="date" name="passport_date_of_expire"
                                                             class="form-control" value="" min="1960-01-01" required>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="pl-2 mt-2">Educational Info</h4>
+                                            <div class="submit-section">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Choose Language</label>
+                                                        <select name="language" class="form-control" required>
+                                                            <option value="">Select Country</option>
+                                                            <option value="">English</option>
+                                                            <option value="">Turkey</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Choose Desired Degree</label>
+                                                        <select name="degree" class="form-control" required>
+                                                            <option value="">Select Degree</option>
+                                                            <option value="bachelor">Bachelor</option>
+                                                            <option value="master">Master</option>
+                                                            <option value="phD">PhD</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Choose University</label>
+                                                        <select name="university" class="form-control" required>
+                                                            <option value="">Select University</option>
+                                                            <option value="gelisim">Gelisim</option>
+                                                            <option value="altinbasy">Altinbasy</option>
+                                                            <option value="aydin">Aydin</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                    <div class="dashboard_container">
-                                                        <div class="dashboard_container_header">
-                                                            <div class="dashboard_fl_1">
-                                                                <h4>Documents</h4>
+
+
+                                            <div class="dashboard_container">
+                                                <div class="dashboard_container_header">
+                                                    <div class="dashboard_fl_1">
+                                                        <h4>Documents</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="dashboard_container_body p-4">
+
+                                                    <!-- <div class="form-submit">
+                                                                <div class="submit-section"> -->
+                                                    <!-- <form method="POST" action="/application/files" id="documentsFormID" -->
+                                                    <!-- enctype="multipart/form-data"> -->
+                                                    <div class="submit-section">
+
+
+
+                                                        <h5>Please Insert img file.Thanks</h5>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label>Profile Picture (Required):
+                                                                    &nbsp;</label>
+
+                                                                <input name="profile_picture" id="pictureInputId"
+                                                                    type="file" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Passport (Required): &nbsp;</label>
+
+                                                                <input name="passport" id="passportInputId" type="file"
+                                                                    class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Diploma (Required): &nbsp;</label>
+
+                                                                <input name="diploma" id="diplomaInputId" type="file"
+                                                                    class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label>Transcript (Required): &nbsp;</label>
+
+                                                                <input name="transcript" id="transcriptInputId"
+                                                                    type="file" class="form-control" required>
+                                                            </div>
+                                                            <div class="form-group col-lg-12 col-md-12">
+                                                                <button class="btn btn-theme" type="submit" id="">Save
+                                                                    Application</button>
                                                             </div>
                                                         </div>
-                                                        <div class="dashboard_container_body p-4">
-
-                                                            <!-- <div class="form-submit">
-                                                                <div class="submit-section"> -->
-                                                            <!-- <form method="POST" action="/application/files" id="documentsFormID" -->
-                                                            <!-- enctype="multipart/form-data"> -->
-                                                            <div class="submit-section">
-
-
-
-                                                                <h5>Please Insert img file.Thanks</h5>
-                                                                <div class="form-row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>Profile Picture (Required):
-                                                                            &nbsp;</label>
-
-                                                                        <input name="profile_picture"
-                                                                            id="pictureInputId" type="file"
-                                                                            class="form-control" required>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>Passport (Required): &nbsp;</label>
-
-                                                                        <input name="passport" id="passportInputId"
-                                                                            type="file" class="form-control" required>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>Diploma (Required): &nbsp;</label>
-
-                                                                        <input name="diploma" id="diplomaInputId"
-                                                                            type="file" class="form-control" required>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label>Transcript (Required): &nbsp;</label>
-
-                                                                        <input name="transcript" id="transcriptInputId"
-                                                                            type="file" class="form-control" required>
-                                                                    </div>
-                                                                    <div class="form-group col-lg-12 col-md-12">
-                                                                        <button class="btn btn-theme" type="submit"
-                                                                            id="">Save
-                                                                            Application</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <!-- </div> -->
                                         </form>
                                     </div>
                                 </div>
