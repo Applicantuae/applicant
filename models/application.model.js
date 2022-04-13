@@ -57,7 +57,7 @@ const ApplicationSchema = new mongoose.Schema({
     // required: true,
   },
   whatsapp_number: {
-    type: Number,
+    type: String,
     // required: true,
   },
   address: {
@@ -85,7 +85,7 @@ const ApplicationSchema = new mongoose.Schema({
     {
       imageUrl: {
         type: String,
-        required: true
+        // required: true
       }
     }
   ],
@@ -93,7 +93,7 @@ const ApplicationSchema = new mongoose.Schema({
     {
       imageUrl: {
         type: String,
-        required: true
+        // required: true
       }
     }
   ],
@@ -102,7 +102,7 @@ const ApplicationSchema = new mongoose.Schema({
     {
       imageUrl: {
         type: String,
-        required: true
+        // required: true
       }
     }
   ],
@@ -111,7 +111,7 @@ const ApplicationSchema = new mongoose.Schema({
     {
       imageUrl: {
         type: String,
-        required: true
+        // required: true
       }
     }
   ],
