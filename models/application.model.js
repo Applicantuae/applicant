@@ -26,7 +26,7 @@ const ApplicationSchema = new mongoose.Schema({
   },
   mother_name: {
     type: String,
-    // required: true,
+    required: true,
   },
   gender: {
     type: String,

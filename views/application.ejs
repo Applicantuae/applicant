@@ -17,13 +17,10 @@
 
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W456L97P9J"></script>
-    <!-- <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-        gtag('config', 'G-W456L97P9J');
-    </script> -->
+    <!-- optionally if you need translation for your language then include locale file as mentioned below -->
+    <script src="path/to/js/locales/<lang>.js"></script>
 
 </head>
 
@@ -993,15 +990,27 @@
                                                             <option value="phD">PhD</option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6">
+
+
+
+                                                    <div class="form-group col-md-6 bg-info">
                                                         <label>Choose University</label>
-                                                        <select name="university" class="form-control" required>
+                                                        <select name="slct1" id="slct1" onchange="populate(this.id, 'slct2')" class="form-control" required>
                                                             <option value="">Select University</option>
                                                             <option value="gelisim">Gelisim</option>
                                                             <option value="altinbasy">Altinbasy</option>
                                                             <option value="aydin">Aydin</option>
                                                         </select>
                                                     </div>
+                                                    <div class="form-group col-md-6 bg-info">
+                                                        <label>Major</label>
+                                                        <select name="slct2" id="slct2" class="form-control">
+                                                            <option value="">Select University</option>
+                                                        </select>
+                                                    </div>
+
+
+
                                                 </div>
                                             </div>
 
@@ -1114,7 +1123,35 @@
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
     </script>
+<script>
+   function populate(s1, s2){
+       let a1 = document.getElementById(s1)
+       let a2 = document.getElementById(s2)
 
+       a2.innerHTML = "";
+       let optionArry;
+
+       if(a1.value == "gelisim") {
+           optionArry = ['not_seleted|Select','english|English', 'turkis|Turkis'];
+       }
+       else if(a1.value == "altinbasy") {
+           optionArry = ['not_seleted|Select','english1|English1', 'turkis1|Turkis1']
+       }
+       else if(a1.value == "aydin") {
+           optionArry = ['not_seleted|Select','english3|English3', 'turkis4|Turkis4']
+       }
+
+       for(let option in optionArry){
+           let pair = optionArry[option].split("|");
+           let newoption = document.createElement('option');
+
+            newoption.value = pair[0];
+            newoption.innerHTML = pair[1]
+            a2.options.add(newoption);
+
+       }
+   }
+</script>
 
 
     <style>
