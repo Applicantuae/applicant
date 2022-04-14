@@ -9,39 +9,43 @@ const Approve = require("../models/approved.model");
 
 // Get application by ID
 const getAllApplication = async (req, res, next) => {
-  let applicant = await Application.find();
-  let appro_status = await Approve.find()
-  // console.log(appro_status);
+  let applicant = await Application.find().populate("approve");
+
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
     );
   }
-  res.render("dashboard", { applicant, appro_status });
+  res.render("dashboard", { applicant });
 };
+
+
 
 const getApplicationById = async (req, res, next) => {
   const { id } = req.params;
-  let approvedStatus;
-  try {
-    approvedStatus = await Approve.findOne({ studentID: id });
-  } catch (error) {
-    return next(
-      new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
-    );
-  }
-  let applicant;
-  try {
-    applicant = await Application.findOne({ _id: id });
-  } catch (error) {
-    return next(
-      new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
-    );
-  }
 
-  if (!approvedStatus) {
-    approvedStatus = "notDecided";
+   let applicant;
+  try {
+    applicant = await Application.findOne({ _id: id }).populate("approve");
+  } catch (error) {
+    return next(
+      new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
+    );
   }
+ 
+  
+  
+  
+  let sts;
+
+  if(applicant.approve[0] !== undefined) {
+      sts = applicant.approve[0].status
+      console.log("Sts :" , sts)
+  } else {
+    sts = "pending"
+    console.log("Sts :" , sts)
+  }
+ 
 
   if (applicant === null || !applicant) {
     return next(
@@ -49,8 +53,8 @@ const getApplicationById = async (req, res, next) => {
     );
   }
 
-  console.log("From router approvedStatus.status1", approvedStatus);
-  res.render("application_from_student", { applicant, approvedStatus });
+  // console.log("From router approvedStatus.status1", approvedStatus);
+  res.render("application_from_student", { applicant, sts });
 };
 
 // Create Application
@@ -71,7 +75,6 @@ const createApplicaton = async (req, res, next) => {
     city_of_residence,
     whatsapp_number,
     address,
-    status,
     passport_date_of_issue,
     passport_number,
     passport_date_of_expire,
@@ -100,7 +103,6 @@ const createApplicaton = async (req, res, next) => {
     passport_date_of_issue,
     passport_number,
     passport_date_of_expire,
-    status,
     profile_picture: [{ imageUrl: req.files.profile_picture[0].path }],
     passport: [{ imageUrl: req.files.passport[0].path }],
     diploma: [{ imageUrl: req.files.diploma[0].path }],
@@ -127,37 +129,33 @@ const createApplicaton = async (req, res, next) => {
   // res.send(applicant);
 };
 
+// Approve Block
 const approve = async (req, res, next) => {
-  console.log("req.params", req.params);
-  const { id } = req.params;
-  const { status1, status2 } = req.body;
+  const application = await Application.findById(req.params.id);
+  const { status } = req.body;
+  // console.log("Status", status);
+  const approved = await Approve.create({ status });
+  // review.author = req.user.id; // for saving/detecting current user
 
-  const applicant = await Application.findOne({ id });
-  const name = applicant.first_name;
+  application.approve.push(approved);
 
-  const approve = await Approve.create({
-    studentID: id,
-    name: name,
-    status1,
-    status2,
-  });
-  let message;
-  if (approve.status1 === "Approved") {
-    message = `Dear applicant, Congratulation. Your application is approved!`;
-  } else {
-    message = `Dear applicant, Sorry We can not proceed with your application.`;
-  }
-  sendEmail;
-  try {
-    await sendEmail({
-      email: applicant.email,
-      subject: "Regarding Applicaiton",
-      message,
-    });
-  } catch (err) {
-    console.log(err);
-    return next(new ErrorResponse("Email could not be sent", 500));
-  }
+  await application.save();
+  const statusOf = await approved.save();
+  // req.flash('success', 'Review Created')
+
+
+
+  // sendEmail;
+  // try {
+  //   await sendEmail({
+  //     email: applicant.email,
+  //     subject: "Regarding Applicaiton",
+  //     message,
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  //   return next(new ErrorResponse("Email could not be sent", 500));
+  // }
   res.redirect("/applications");
 };
 

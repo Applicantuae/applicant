@@ -1,18 +1,15 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const ApprovedSchema = new mongoose.Schema({
-  status1: {
+const ApprovedSchema = new Schema({
+  status: {
     type: String,
+    enum: ['Approved', 'Rejected']
   },
-  status2: {
-    type: String,
-  },
-  studentID: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
+  applicant: {
+    type: Schema.Types.ObjectId,
+    ref: 'Application'
+},
 });
 
 module.exports = mongoose.model("Approve", ApprovedSchema);

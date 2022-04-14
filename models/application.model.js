@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+const opts = { toJSON: { virtuals: true } };
 
 const ApplicationSchema = new mongoose.Schema({
   first_name: {
@@ -115,14 +116,14 @@ const ApplicationSchema = new mongoose.Schema({
       }
     }
   ],
-  applicant: {
+  approve: [
+    {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Application",
+    ref: "Approve",
   },
-  status: {
-    type: String,
-    enum: ['Approved', 'Rejected']
-  }
-});
+],
+}, 
+opts
+);
 
 module.exports = mongoose.model("Application", ApplicationSchema);

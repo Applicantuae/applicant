@@ -11,9 +11,12 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Details</th>
+                <th>Status</th>
               </tr>  
                 <div class="bg-light mb-1 border-primary mt-3 rounded">
                     <% for(let student of applicant) {%>
+
+                    
                     <h6 class="text-dark .bg-white">
             <tr class="border border-success" style="height:50px; width:20">
                 <td class="border border-success" >
@@ -24,44 +27,31 @@
                 </td>
                 <td class="border border-success"><a class="link-primary" href="/application/<%= student.id %>">Details
                     </a>
-                    <% } %>
                 </td>               
-            </tr>
-            </table>
-          </div>
-        
-        <!-- Statusssssssssssss -->
-          <div class="column1">
-            <table>
-              <tr>
-                <!-- <th>Student Id</th> -->
-                <th>Status</th>
-              </tr>   
-                <div class="bg-light mb-1 border-primary mt-3 rounded">
-                    <% for(let status of appro_status) {%>
-                    <h6 class="text-dark .bg-white">
-            <tr class="border border-success">
-                <td class="border border-success" style="height:50px; width:20">
-                    <% const getStatusfunction = () => {
-                        let st;
-                        if(status.status1) {
-                            st = status.status1
-                            console.log("Dashbd", st)
-                        } 
-                        if(status.status2) {
-                            st = status.status2
-                            console.log("Dashbdddddddddddd", st)
-                        }
-                        return st
+                <td class="border border-success">
+               <h5> 
+                 <% const getStatus = () => {
+                    let st;
+                      if(student.approve[0] !== undefined) {
+                      st =student.approve[0].status
+                    } else {
+                      st = "Incomplete"
                     }
-                    %> 
-                    <%= getStatusfunction() %>
-                </td>
+                    return st;
+                 }
+                  %> 
+                  
+                  <%= getStatus() %> 
+              
+                </h5>
+
+                </td>               
                 <% } %>
             </tr>
             </table>
           </div>
-                
+        
+        
         
         </div>
         
