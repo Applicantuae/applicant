@@ -10,14 +10,14 @@ const Approve = require("../models/approved.model");
 // Get application by ID
 const getAllApplication = async (req, res, next) => {
   let applicant = await Application.find();
-
-  // console.log(applicant);
+  let appro_status = await Approve.find()
+  // console.log(appro_status);
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
     );
   }
-  res.render("list_of_applicant", { applicant });
+  res.render("dashboard", { applicant, appro_status });
 };
 
 const getApplicationById = async (req, res, next) => {

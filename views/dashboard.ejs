@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+
+<div style="margin-top: 10px; margin-left: -15px;">
+<h1>Dashboard</h1>
+</div>
+        <div class="row rounded">
+            
+          <div class="column">
+            <table>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Details</th>
+              </tr>  
+                <div class="bg-light mb-1 border-primary mt-3 rounded">
+                    <% for(let student of applicant) {%>
+                    <h6 class="text-dark .bg-white">
+            <tr class="border border-success" style="height:50px; width:20">
+                <td class="border border-success" >
+                    <%= student.id %>
+                </td>
+                <td class="border border-success">
+                    <%= student.first_name %>
+                </td>
+                <td class="border border-success"><a class="link-primary" href="/application/<%= student.id %>">Details
+                    </a>
+                    <% } %>
+                </td>               
+            </tr>
+            </table>
+          </div>
+        
+        <!-- Statusssssssssssss -->
+          <div class="column1">
+            <table>
+              <tr>
+                <!-- <th>Student Id</th> -->
+                <th>Status</th>
+              </tr>   
+                <div class="bg-light mb-1 border-primary mt-3 rounded">
+                    <% for(let status of appro_status) {%>
+                    <h6 class="text-dark .bg-white">
+            <tr class="border border-success">
+                <td class="border border-success" style="height:50px; width:20">
+                    <% const getStatusfunction = () => {
+                        let st;
+                        if(status.status1) {
+                            st = status.status1
+                            console.log("Dashbd", st)
+                        } 
+                        if(status.status2) {
+                            st = status.status2
+                            console.log("Dashbdddddddddddd", st)
+                        }
+                        return st
+                    }
+                    %> 
+                    <%= getStatusfunction() %>
+                </td>
+                <% } %>
+            </tr>
+            </table>
+          </div>
+                
+        
+        </div>
+        
