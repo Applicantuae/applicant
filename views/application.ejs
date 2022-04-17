@@ -973,44 +973,90 @@
                                             <h4 class="pl-2 mt-2">Educational Info</h4>
                                             <div class="submit-section">
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label>Choose Language</label>
-                                                        <select name="language" class="form-control" required>
-                                                            <option value="">Select Country</option>
-                                                            <option value="English">English</option>
-                                                            <option value="Turkey">Turkey</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label>Choose Desired Degree</label>
-                                                        <select name="degree" class="form-control" required>
-                                                            <option value="">Select Degree</option>
-                                                            <option value="bachelor">Bachelor</option>
-                                                            <option value="master">Master</option>
-                                                            <option value="phD">PhD</option>
-                                                        </select>
-                                                    </div>
-
-
-
+                                            
+                                            
                                                     <div class="form-group col-md-6 bg-info rounded text-white">
                                                         <label>Choose University</label>
-                                                        <select name="slct1" id="slct1" onchange="populate(this.id, 'slct2')" class="form-control" required>
+                                                        <!-- <select name="slct1" id="slct1" onchange="populate(this.id, 'slct2')" class="form-control" required>
                                                             <option value="">Select University</option>
                                                             <option value="gelisim">Gelisim</option>
                                                             <option value="altinbasy">Altinbasy</option>
                                                             <option value="aydin">Aydin</option>
-                                                        </select>
+                                                        </select> -->
+
+
+                                                        <select
+                                                        name="s1"
+                                                        id="s1"
+                                                        onchange="Value()"
+                                                        class="form-control"
+                                                        required
+                                                      >
+                                                        <option value="">Select University</option>
+                                                        <option value="Gelisim University">Gelisim University</option>
+                                                        <option value="Altinbas University">Altinbas University</option>
+                                                        <option value="Aydin Universit">Aydin University</option>
+                                                        <option value="Ostim Technical University">
+                                                          Ostim Technical University
+                                                        </option>
+                                                        <option value="Arel University">Arel University</option>
+                                                      </select>
+
                                                     </div>
+
+
+
                                                     <div class="form-group col-md-6 bg-info text-white rounded">
-                                                        <label>Major</label>
+                                                        <label>Choose a Degree type</label>
+                                                        <!-- <select name="slct2" id="slct2" class="form-control">
+                                                            <option value="">Select University</option>
+                                                        </select> -->
+                                                        <select
+                                                        name="s3"
+                                                        id="s3"
+                                                        onchange="Value()"
+                                                        class="form-control"
+                                                        required
+                                                      >
+                                                        <option value="">Select Degree</option>
+                                                        <option value="bachelor">Bachelor</option>
+                                                        <option value="master">Master</option>
+                                                        <option value="phd">PhD</option>
+                                                      </select>
+
+
+                                                    </div>
+
+
+
+                                                    <div class="form-group col-md-6 bg-info text-white rounded">
+                                                        <!-- <label>Major</label>
                                                         <select name="slct2" id="slct2" class="form-control">
                                                             <option value="">Select University</option>
+                                                        </select> -->
+                                                        <label>Choose a Language</label>
+                                                        <select
+                                                          name="s4"
+                                                          id="s4"
+                                                          onchange="Value()"
+                                                          class="form-control"
+                                                          required
+                                                        >
+                                                          <option value="">Select Degree</option>
+                                                          <option value="english">English</option>
+                                                          <option value="turkish">Turkish</option>
+                                                        </select>
+                                                      </div>
+
+
+
+                                                    <div class="form-group col-md-6 bg-info text-white rounded">
+                                                        <label>Choose a Major</label>
+                                                        <select name="s2" id="s2" class="form-control">
+                                                          <option value="">Select University, Degree type & Language</option>
                                                         </select>
                                                     </div>
-
-
-
+                                                </div>
                                                 </div>
                                             </div>
 
@@ -1024,13 +1070,9 @@
                                                 </div>
                                                 <div class="dashboard_container_body p-4">
 
-                                                    <!-- <div class="form-submit">
-                                                                <div class="submit-section"> -->
-                                                    <!-- <form method="POST" action="/application/files" id="documentsFormID" -->
-                                                    <!-- enctype="multipart/form-data"> -->
+                                           
+
                                                     <div class="submit-section">
-
-
                                                         <h5>Please Upload You Necessary Documents</h5>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -1151,6 +1193,242 @@
        }
    }
 </script>
+
+<!-- Drop Down list Script -->
+<script>
+    function Value() {
+      let a1 = document.getElementById("s1");
+      let a2 = document.getElementById("s2");
+      let a3 = document.getElementById("s3");
+      let a4 = document.getElementById("s4");
+      a2.innerHTML = "";
+      let optionArry;
+      if (a1.value == "Gelisim University") {
+        if (a4.value == "english") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_En_Bachelor_1|Gelisim_En_Bachelor_1",
+              "Gelisim_En_Bachelor_2|Gelisim_En_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_En_Master_1|Gelisim_En_Master_1",
+              "Gelisim_En_Master_2|Gelisim_En_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_En_Phd_1|Gelisim_En_Phd_1",
+              "Gelisim_En_Phd_2|Gelisim_En_Phd_2",
+            ];
+          }
+        } else if (a4.value == "turkish") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_Tr_Bachelor_1|Gelisim_Tr_Bachelor_1",
+              "Gelisim_Tr_Bachelor_2|Gelisim_Tr_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_Tr_Master_1|Gelisim_Tr_Master_1",
+              "Gelisim_Tr_Master_2|Gelisim_Tr_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Gelisim_Tr_Phd_1|Gelisim_Tr_Phd_1",
+              "Gelisim_Tr_Phd_2|Gelisim_Tr_Phd_2",
+            ];
+          }
+        }
+
+      } else if (a1.value == "Altinbas University") {
+        if (a4.value == "english") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_En_Bachelor_1|Altinbas_En_Bachelor_1",
+              "Altinbas_En_Bachelor_2|Altinbas_En_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_En_Master_1|Altinbas_En_Master_1",
+              "Altinbas_En_Master_2|Altinbas_En_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_En_Phd_1|Altinbas_En_Phd_1",
+              "Altinbas_En_Phd_2|Altinbas_En_Phd_2",
+            ];
+          }
+        } else if (a4.value == "turkish") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_Tr_Bachelor_1|Altinbas_Tr_Bachelor_1",
+              "Altinbas_Tr_Bachelor_2|Altinbas_Tr_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_Tr_Master_1|Altinbas_Tr_Master_1",
+              "Altinbas_Tr_Master_2|Altinbas_Tr_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Altinbas_Tr_Phd_1|Altinbas_Tr_Phd_1",
+              "Altinbas_Tr_Phd_2|Altinbas_Tr_Phd_2",
+            ];
+          }
+        }
+
+      } else if (a1.value == "Aydin Universit") {
+        if (a4.value == "english") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_En_Bachelor_1|Aydin_En_Bachelor_1",
+              "Aydin_En_Bachelor_2|Aydin_En_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_En_Master_1|Aydin_En_Master_1",
+              "Aydin_En_Master_2|Aydin_En_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_En_Phd_1|Aydin_En_Phd_1",
+              "Aydin_En_Phd_2|Aydin_En_Phd_2",
+            ];
+          }
+        } else if (a4.value == "turkish") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_Tr_Bachelor_1|Aydin_Tr_Bachelor_1",
+              "Aydin_Tr_Bachelor_2|Aydin_Tr_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_Tr_Master_1|Aydin_Tr_Master_1",
+              "Aydin_Tr_Master_2|Aydin_Tr_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Aydin_Tr_Phd_1|Aydin_Tr_Phd_1",
+              "Aydin_Tr_Phd_2|Aydin_Tr_Phd_2",
+            ];
+          }
+        }
+
+
+      
+      } else if (a1.value == "Ostim Technical University") {
+        if (a4.value == "english") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_En_Bachelor_1|Ostim_En_Bachelor_1",
+              "Ostim_En_Bachelor_2|Ostim_En_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_En_Master_1|Ostim_En_Master_1",
+              "Ostim_En_Master_2|Ostim_En_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_En_Phd_1|Ostim_En_Phd_1",
+              "Ostim_En_Phd_2|Ostim_En_Phd_2",
+            ];
+          }
+        } else if (a4.value == "turkish") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_Tr_Bachelor_1|Ostim_Tr_Bachelor_1",
+              "Ostim_Tr_Bachelor_2|Ostim_Tr_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_Tr_Master_1|Ostim_Tr_Master_1",
+              "Ostim_Tr_Master_2|Ostim_Tr_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Ostim_Tr_Phd_1|Ostim_Tr_Phd_1",
+              "Ostim_Tr_Phd_2|Ostim_Tr_Phd_2",
+            ];
+          }
+        }
+      } else if (a1.value == "arel") {
+        if (a4.value == "english") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_En_Bachelor_1|Arel_En_Bachelor_1",
+              "Arel_En_Bachelor_2|Arel_En_Bachelor_2",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_En_Master_1|Arel_En_Master_1",
+              "Arel_En_Master_2|Arel_En_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_En_Phd_1|Arel_En_Phd_1",
+              "Arel_En_Phd_2|Arel_En_Phd_2",
+            ];
+          }
+        } else if (a4.value == "turkish") {
+          if (a3.value == "bachelor") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_Tr_Bachelor_1|Arel_Tr_Bachelor_1",
+              "Arel_Tr_Bachelor_1|Arel_Tr_Bachelor_1",
+            ];
+          } else if (a3.value == "master") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_Tr_Master_1|Arel_Tr_Master_1",
+              "Arel_Tr_Master_2|Arel_Tr_Master_2",
+            ];
+          } else if (a3.value == "phd") {
+            optionArry = [
+              "not_seleted|Select",
+              "Arel_Tr_Phd_1|Arel_Tr_Phd_1",
+              "Arel_Tr_Phd_2|Arel_Tr_Phd_2",
+            ];
+          }
+        }
+      }
+      for (let option in optionArry) {
+        let pair = optionArry[option].split("|");
+        let newoption = document.createElement("option");
+        newoption.value = pair[0];
+        newoption.innerHTML = pair[1];
+        a2.options.add(newoption);
+      }
+    }
+  </script>
+
 
 
     <style>

@@ -122,6 +122,29 @@ const ApplicationSchema = new mongoose.Schema({
     ref: "Approve",
   },
 ],
+// S1 is for university
+s1: {
+  type: String,
+  // required: true,
+},
+// S2 for Degree and University
+s2: {
+  type: String,
+  // required: true,
+},
+// S3 for degree type bachelor, master
+s3: {
+  type: String,
+  // required: true,
+},
+// S4 for language
+s4: {
+  type: String,
+  // required: true,
+},
+
+
+
 }, 
 opts
 );

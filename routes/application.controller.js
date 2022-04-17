@@ -32,8 +32,7 @@ const getApplicationById = async (req, res, next) => {
       new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
     );
   }
- 
-  
+   
   
   
   let sts;
@@ -78,6 +77,10 @@ const createApplicaton = async (req, res, next) => {
     passport_date_of_issue,
     passport_number,
     passport_date_of_expire,
+    s1,
+    s2,
+    s3,
+    s4,
   } = req.body;
 
   const findEmail = await Application.findOne({ email });
@@ -103,6 +106,10 @@ const createApplicaton = async (req, res, next) => {
     passport_date_of_issue,
     passport_number,
     passport_date_of_expire,
+    s1,
+    s2,
+    s3,
+    s4,
     profile_picture: [{ imageUrl: req.files.profile_picture[0].path }],
     passport: [{ imageUrl: req.files.passport[0].path }],
     diploma: [{ imageUrl: req.files.diploma[0].path }],
