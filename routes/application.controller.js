@@ -4,7 +4,6 @@ const sendEmail = require("../utility/sendgmail");
 
 const Application = require("../models/application.model");
 
-const { cloudinary } = require("../cloudinary/cloudinary.config");
 const Approve = require("../models/approved.model");
 
 // Get application by ID
@@ -19,12 +18,10 @@ const getAllApplication = async (req, res, next) => {
   res.render("dashboard", { applicant });
 };
 
-
-
 const getApplicationById = async (req, res, next) => {
   const { id } = req.params;
 
-   let applicant;
+  let applicant;
   try {
     applicant = await Application.findOne({ _id: id }).populate("approve");
   } catch (error) {
@@ -32,19 +29,16 @@ const getApplicationById = async (req, res, next) => {
       new ErrorResponse(`Applicant not found with the name of : ${id}`, 404)
     );
   }
-   
-  
-  
+
   let sts;
 
-  if(applicant.approve[0] !== undefined) {
-      sts = applicant.approve[0].status
-      console.log("Sts :" , sts)
+  if (applicant.approve[0] !== undefined) {
+    sts = applicant.approve[0].status;
+    // console.log("Sts :" , sts)
   } else {
-    sts = "pending"
-    console.log("Sts :" , sts)
+    sts = "pending";
+    // console.log("Sts :" , sts)
   }
- 
 
   if (applicant === null || !applicant) {
     return next(
@@ -139,30 +133,34 @@ const createApplicaton = async (req, res, next) => {
 // Approve Block
 const approve = async (req, res, next) => {
   const application = await Application.findById(req.params.id);
+
   const { status } = req.body;
-  // console.log("Status", status);
+
   const approved = await Approve.create({ status });
-  // review.author = req.user.id; // for saving/detecting current user
 
   application.approve.push(approved);
 
   await application.save();
   const statusOf = await approved.save();
-  // req.flash('success', 'Review Created')
 
+  let message;
+  if (approved.status === "Approved") {
+    message = `Dear applicant, Congratulation! Your application is approved!`;
+  } else {
+    message = `Dear applicant, Thank you for applying in this program. We are sorry to say that we can not proceed with your application.`;
+  }
 
-
-  // sendEmail;
-  // try {
-  //   await sendEmail({
-  //     email: applicant.email,
-  //     subject: "Regarding Applicaiton",
-  //     message,
-  //   });
-  // } catch (err) {
-  //   console.log(err);
-  //   return next(new ErrorResponse("Email could not be sent", 500));
-  // }
+  sendEmail;
+  try {
+    await sendEmail({
+      email: application.email,
+      subject: "Regarding Applicaiton",
+      message,
+    });
+  } catch (err) {
+    console.log(err);
+    return next(new ErrorResponse("Email could not be sent", 500));
+  }
   res.redirect("/applications");
 };
 
