@@ -2,25 +2,27 @@
 
 <div style="text-align: center;">
 <h1>Dashboard</h1>
-</div>
+</div >
         <div class="row rounded">
             
-          <div class="column">
-            <table>
+          <div class="">
+            <table class="table">
+              <thead style="background-color: aqua;" >
               <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Details</th>
-                <th>Status</th>
-                <th>Date</th>
-                <th>Action</th>
+                <th class="idd" scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Details</th>
+                <th scope="col">Status</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
               </tr>  
+            </thead>
                 <div class="bg-light mb-1 border-primary mt-3 rounded">
                     <% for(let student of applicant) {%>
 
                     <h6 class="text-dark .bg-white">
-            <tr class="border border-success" style="height:50px; width:20">
-                <td class="border border-success" >
+            <tr class="border border-success" style="background-color: rgb(244, 228, 53);" >
+                <td class="border border-success idd" >
                     <%= student.id %>
                 </td>
                 <td class="border border-success">
@@ -30,7 +32,7 @@
                     </a>
                 </td>               
                 <td class="border border-success">
-               <h5> 
+               <p> 
                  <% const getStatus = () => {
                     let st;
                       if(student.approve[0] !== undefined) {
@@ -44,7 +46,7 @@
                   
                   <%= getStatus() %> 
               
-                </h5>
+                </p>
                 </td>
                 <td class="border border-success" >
                   <%= student.createAt %>
