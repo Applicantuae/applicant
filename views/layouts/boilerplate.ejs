@@ -20,9 +20,8 @@
         border-collapse: collapse;
         border-spacing: 0;
         width: 100%;
-       
         background-color: #f2f2f2;
-        border-radius: 13px;
+        border-radius: 3px;
       }
 
       th,
@@ -41,20 +40,9 @@
       }
 
       .row {
-          border-radius: 13px;
-      }
-
-      .column {
-        float: left;
-        width: 50%;
-        padding: 0px;
         border-radius: 13px;
       }
-      .column1 {
-        float: left;
-        width: 10%;
-        padding: 0px;
-      }
+
 
       /* Clearfix (clear floats) */
       .row::after {
@@ -68,12 +56,9 @@
       }
 
       @media only screen and (max-width: 778px) {
-        .column1 {
-        float: left;
-        width: 10%;
-        padding-left: 350px;
-        margin-top: -502px;
-      }
+        .column {
+          width: 10%;
+        }
       }
 
       /* table ends */

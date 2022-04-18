@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
 
-<div style="margin-top: 10px; margin-left: -15px;">
+<div style="text-align: center;">
 <h1>Dashboard</h1>
 </div>
         <div class="row rounded">
@@ -12,12 +12,12 @@
                 <th>Name</th>
                 <th>Details</th>
                 <th>Status</th>
+                <th>Date</th>
                 <th>Action</th>
               </tr>  
                 <div class="bg-light mb-1 border-primary mt-3 rounded">
                     <% for(let student of applicant) {%>
 
-                    
                     <h6 class="text-dark .bg-white">
             <tr class="border border-success" style="height:50px; width:20">
                 <td class="border border-success" >
@@ -46,13 +46,17 @@
               
                 </h5>
                 </td>
+                <td class="border border-success" >
+                  <%= student.createAt %>
+              </td> 
                 <td class="border border-success">
                   <form
                   action="/delete/<%= student._id%>%>?_method=DELETE"
                   method="POST">
                   <button onclick="return confirm(`Are you sure you want to delete Applicant:- <%=student.first_name %> <%=student.last_name %>?`);" class="btn btn-danger"> Delete</button>
                   </form>
-                </td>                
+                </td>   
+                     
                 <% } %>
             </tr>
             </table>
