@@ -12,6 +12,7 @@
                 <th>Name</th>
                 <th>Details</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>  
                 <div class="bg-light mb-1 border-primary mt-3 rounded">
                     <% for(let student of applicant) {%>
@@ -44,8 +45,10 @@
                   <%= getStatus() %> 
               
                 </h5>
-
-                </td>               
+                </td>
+                <td class="border border-success">
+                  <button class="btn btn-warning"> Delete</button>
+                </td>                
                 <% } %>
             </tr>
             </table>

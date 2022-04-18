@@ -4,6 +4,7 @@ const {
   createApplicaton,
   getAllApplication,
   approve,
+  // deleteApplication,
 
 } = require("./application.controller");
 const router = express.Router();
@@ -19,6 +20,9 @@ router.get("/", (req, res) => {
 router.get("/applications", getAllApplication);
 router.get("/application/:id", getApplicationById);
 router.post("/application/approve/:id", approve);
+
+// router.delete("/delete/:id", deleteApplication)
+
 
 router.post("/application", upload.fields([
   {name: "profile_picture", maxCount: 1},
