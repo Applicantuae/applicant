@@ -933,7 +933,7 @@
                                                     <div class="form-group col-md-6">
                                                         <label>City of residence</label>
                                                         <input type="text" class="form-control" name="city_of_residence"
-                                                            value="Chittagong" required>
+                                                            value="" required>
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label>Whatsapp Number</label>
@@ -944,7 +944,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label>Address</label>
                                                         <textarea name="address" class="form-control"
-                                                            required>Chittagong</textarea>
+                                                            required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1070,9 +1070,7 @@
                                                 </div>
                                                 <div class="dashboard_container_body p-4">
 
-                                           
-
-                                                    <div class="submit-section">
+                                                <div class="submit-section">
                                                         <h5>Please Upload You Necessary Documents</h5>
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
@@ -1080,25 +1078,26 @@
                                                                     &nbsp;</label>
 
                                                                 <input name="profile_picture" id="pictureInputId"
-                                                                    type="file" class="form-control" required>
+                                                                    type="file" class="form-control" accept="image/*" required>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label>Passport (Required): &nbsp;</label>
 
                                                                 <input name="passport" id="passportInputId" type="file"
-                                                                    class="form-control" required>
+                                                                  class="form-control" accept="image/*, application/pdf" required>
                                                             </div>
+                                                            
                                                             <div class="form-group col-md-6">
                                                                 <label>Diploma (Required): &nbsp;</label>
 
                                                                 <input name="diploma" id="diplomaInputId" type="file"
-                                                                    class="form-control" required>
+                                                                    class="form-control" accept="image/*, application/pdf" required>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label>Transcript (Required): &nbsp;</label>
 
                                                                 <input name="transcript" id="transcriptInputId"
-                                                                    type="file" class="form-control" required>
+                                                                    type="file" class="form-control" accept="image/*, application/pdf" required>
                                                             </div>
                                                             <div class="form-group col-lg-12 col-md-12">
                                                                 <button class="btn btn-theme" type="submit" id="">Save
@@ -1151,7 +1150,6 @@
 
 
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
@@ -1164,35 +1162,7 @@
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
     </script>
-<script>
-   function populate(s1, s2){
-       let a1 = document.getElementById(s1)
-       let a2 = document.getElementById(s2)
 
-       a2.innerHTML = "";
-       let optionArry;
-
-       if(a1.value == "gelisim") {
-           optionArry = ['not_seleted|Select','english|English', 'turkis|Turkis'];
-       }
-       else if(a1.value == "altinbasy") {
-           optionArry = ['not_seleted|Select','english1|English1', 'turkis1|Turkis1']
-       }
-       else if(a1.value == "aydin") {
-           optionArry = ['not_seleted|Select','english3|English3', 'turkis4|Turkis4']
-       }
-
-       for(let option in optionArry){
-           let pair = optionArry[option].split("|");
-           let newoption = document.createElement('option');
-
-            newoption.value = pair[0];
-            newoption.innerHTML = pair[1]
-            a2.options.add(newoption);
-
-       }
-   }
-</script>
 
 <!-- Drop Down list Script -->
 <script>
