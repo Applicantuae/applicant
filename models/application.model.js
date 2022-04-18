@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Approve = require("./approved.model")
 const opts = { toJSON: { virtuals: true } };
 
 const ApplicationSchema = new mongoose.Schema({
@@ -144,9 +144,20 @@ s4: {
 },
 
 
-
 }, 
 opts
 );
+
+ApplicationSchema.post("findOneAndDelete", async function (doc) {
+  if (doc) {
+    await Approve.deleteMany({
+      _id: {
+        $in: doc.approve,
+      },
+    });
+  }
+});
+
+
 
 module.exports = mongoose.model("Application", ApplicationSchema);

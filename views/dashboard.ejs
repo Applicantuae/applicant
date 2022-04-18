@@ -47,7 +47,11 @@
                 </h5>
                 </td>
                 <td class="border border-success">
-                  <button class="btn btn-warning"> Delete</button>
+                  <form
+                  action="/delete/<%= student._id%>%>?_method=DELETE"
+                  method="POST">
+                  <button onclick="return confirm(`Are you sure you want to delete Applicant:- <%=student.first_name %> <%=student.last_name %>?`);" class="btn btn-danger"> Delete</button>
+                  </form>
                 </td>                
                 <% } %>
             </tr>

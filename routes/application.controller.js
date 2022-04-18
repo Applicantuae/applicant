@@ -164,9 +164,16 @@ const approve = async (req, res, next) => {
   res.redirect("/applications");
 };
 
+const deleteApplication = async (req, res) => {
+  const { id } = req.params;
+  await Application.findByIdAndDelete(id);
+  res.redirect("/applications");
+};
+
 module.exports = {
   getApplicationById,
   createApplicaton,
   getAllApplication,
   approve,
+  deleteApplication,
 };
