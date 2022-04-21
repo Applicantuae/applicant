@@ -82,6 +82,7 @@ const createApplicaton = async (req, res, next) => {
   if (findEmail) {
     return next(new ErrorResponse("Your email is registered", 400));
   }
+  
   const applicant = await Application.create({
     first_name,
     last_name,
@@ -137,8 +138,11 @@ const approve = async (req, res, next) => {
   const { status } = req.body;
 
   const approved = await Approve.create({ status });
-
-  application.approve.push(approved);
+try {
+  application.approve.push(approved); // application.approve this approve has come from application model ref..
+} catch (error) {
+  res.send("Internal Server Error")
+}
 
   await application.save();
   const statusOf = await approved.save();

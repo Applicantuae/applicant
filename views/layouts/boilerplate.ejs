@@ -1,75 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/app.css" />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
-    <title>Apply</title>
-    <link rel="stylesheet" href="/bootstrap.min.css" />
-    <style>
-      body {
-        background-image: url("/BG2.jpg");
-        background-size: cover;
-        background-image: no-repeat scroll center scroll;
-        height: 100vh;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
+  <title>Apply</title>
+  <link rel="stylesheet" href="/bootstrap.min.css" />
+  <!-- Latest compiled and minified CSS -->
+
+
+
+  <style>
+    body {
+      background-image: url("/BG2.jpg");
+      background-size: cover;
+      background-image: no-repeat scroll center scroll;
+      height: 100vh;
+    }
+
+    td, tr{
+      text-align: center;
+    }
+    .approve {
+      background-color: red;
+    }
+
+    .border_a {
+      border: 1px solid green;
+    }
+
+
+    tr:nth-child(even) {
+      background-color: #36b862;
+    }
+
+    @media only screen and (max-width: 778px) {
+      .column {
+        width: 10%;
       }
 
-
-
-      tr:nth-child(even) {
-        background-color: #36b862;
+      .idd {
+        display: none;
       }
 
-      @media only screen and (max-width: 778px) {
-        .column {
-          width: 10%;
-        }
-        .idd {
-          display: none;
-        }
-        .dash {
-          text-align: left;
-        }
+      .dash {
+        text-align: left;
       }
+    }
 
-      /* table ends */
-    </style>
-  </head>
+    /* table ends */
+  </style>
+</head>
 
-  <body class="d-flex flex-column vh-100">
-    <%- include('../partials/navbar.ejs') %>
+<body class="d-flex flex-column vh-100">
+  <%- include('../partials/navbar.ejs') %>
 
     <main class="container mt-0 pt-0">
-      <%- include('../partials/flash.ejs')%> <%- body %>
+      <%- include('../partials/flash.ejs')%>
+        <%- body %>
     </main>
 
     <%- include('../partials/footer') %>
-    <!-- <script src="/bootstrap.bundle.min.js"></script> -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- <script src="/bootstrap.bundle.min.js"></script> -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-    <script>
-      let password = document.getElementById("password");
-      let confirm_password = document.getElementById("confirm_password");
+      <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+      <script>
+        let password = document.getElementById("password");
+        let confirm_password = document.getElementById("confirm_password");
 
-      function validatePassword() {
-        if (password.value != confirm_password.value) {
-          confirm_password.setCustomValidity("Passwords Don't Match");
-          console.log("Clicked");
-        } else {
-          confirm_password.setCustomValidity("");
+        function validatePassword() {
+          if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+            console.log("Clicked");
+          } else {
+            confirm_password.setCustomValidity("");
+          }
         }
-      }
 
-      password.onchange = validatePassword;
-      confirm_password.onkeyup = validatePassword;
-    </script>
-  </body>
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+      </script>
+</body>
+
 </html>
