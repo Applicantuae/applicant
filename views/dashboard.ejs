@@ -27,8 +27,9 @@
   <div style="text-align: center;">
     <h1 class="dash">Dashboard</h1>
   </div>
-  <div class="row rounded">
-    <div class="a border border-success">
+
+  <div class="a row rounded">
+    <div class="border border-success">
       <table class="table p-0 border border-success">
         <thead style="background-color: aqua;" class="border border-success">
           <tr class="border border-success">
@@ -45,7 +46,7 @@
           <% for(let student of applicant) {%>
 
             <h6 class="text-dark .bg-white">
-              <tr class="border border-success" style="background-color: rgb(244, 228, 53);">
+              <tr class="border border-success" style="background-color: yellow;">
                 <td class="border border-success idd">
                   <%= student.id %>
                 </td>
@@ -69,7 +70,7 @@
 
 
                   <td class="<%= getStatus() %>">
-                    <% console.log("GetUser", getStatus()) %>
+                   
                       <p>
                         <%= getStatus() %>
                       </p>
@@ -91,9 +92,9 @@
 
                   <td class="border border-success">
                     <form action="/delete/<%= student._id%>%>?_method=DELETE" method="POST">
-                      <button
+                      <button1
                         onclick="return confirm(`Are you sure you want to delete Applicant:- <%=student.first_name %> <%=student.last_name %>?`);"
-                        class="btn btn-danger"> Delete</button>
+                        class="btn btn-danger"> Delete</button1>
                     </form>
                   </td>
 
@@ -101,30 +102,6 @@
               </tr>
       </table>
     </div>
-
-
-
   </div>
 
-  <!-- Button trigger modal -->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 

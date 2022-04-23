@@ -10,6 +10,15 @@ const Approve = require("../models/approved.model");
 const getAllApplication = async (req, res, next) => {
   let applicant = await Application.find().populate("approve");
 
+
+
+
+
+
+
+
+
+
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
