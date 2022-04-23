@@ -9,16 +9,6 @@ const Approve = require("../models/approved.model");
 // Get application by ID
 const getAllApplication = async (req, res, next) => {
   let applicant = await Application.find().populate("approve");
-
-
-
-
-
-
-
-
-
-
   if (applicant === null || !applicant) {
     return next(
       new ErrorResponse(`Applicant not found with the name of :`, 404)
@@ -91,7 +81,7 @@ const createApplicaton = async (req, res, next) => {
   if (findEmail) {
     return next(new ErrorResponse("Your email is registered", 400));
   }
-  
+
   const applicant = await Application.create({
     first_name,
     last_name,
@@ -124,13 +114,26 @@ const createApplicaton = async (req, res, next) => {
 
   const url = await applicant.id;
 
-  const message = `Dear applicant, Thank you for applying in this program. We will let you shortly about your application`;
-  sendEmail;
   try {
     await sendEmail({
       email: applicant.email,
       subject: "Regarding Applicaiton",
-      message,
+      message: `Dear applicant, Thank you for applying in this program. We will let you shortly about your application`,
+    });
+  } catch (err) {
+    console.log(err);
+    return next(new ErrorResponse("Email could not be sent", 500));
+  }
+
+  const resetUrl = `${req.protocol}://${req.get("host")}/application/${
+    applicant.id
+  }`;
+
+  try {
+    await sendEmail({
+      email: "mohiu2919@gmail.com",
+      subject: "New Applicantion!",
+      message: `Dear Authority, ${applicant.first_name} has applied from ${applicant.country_of_residence}. Please click here to see full application: n\n\ ${resetUrl}`,
     });
   } catch (err) {
     console.log(err);
@@ -147,11 +150,11 @@ const approve = async (req, res, next) => {
   const { status } = req.body;
 
   const approved = await Approve.create({ status });
-try {
-  application.approve.push(approved); // application.approve this approve has come from application model ref..
-} catch (error) {
-  res.send("Internal Server Error")
-}
+  try {
+    application.approve.push(approved); // application.approve this approve has come from application model ref..
+  } catch (error) {
+    res.send("Internal Server Error");
+  }
 
   await application.save();
   const statusOf = await approved.save();

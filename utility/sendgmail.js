@@ -14,15 +14,15 @@ const sendEmail = async (option) => {
     },
   });
 
-  let mailList = [
-    option.email,
-    "mohiu2919@gmail.com"
-  ]
+  // let mailList = [
+  //   option.email,
+  //   "mohiu2919@gmail.com"
+  // ]
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: `${process.env.FROM_NAME} <process.env.FROM_EMAIL>`,
-    to: mailList, // list of receivers
+    to: option.email, // list of receivers
     subject: option.subject, // Subject line
     text: option.message, // plain text body
     // html: `<h2> Dear Applicant, </h2> <br>
