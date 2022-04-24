@@ -49,6 +49,11 @@ const getApplicationById = async (req, res, next) => {
   res.render("application_from_student", { applicant, sts });
 };
 
+// ===============================================================================================
+let applicant1
+
+
+
 // Create Application
 const createApplicaton = async (req, res, next) => {
   // console.log("req files.......:", req.files);
@@ -78,11 +83,10 @@ const createApplicaton = async (req, res, next) => {
 
   const findEmail = await Application.findOne({ email });
 
-  if (findEmail) {
-    return next(new ErrorResponse("Your email is registered", 400));
-  }
-
-  const applicant = await Application.create({
+  // if (findEmail) {
+  //   return next(new ErrorResponse("Your email is registered", 400));
+  // }
+  applicant1 = await Application.create({
     first_name,
     last_name,
     gender,
@@ -109,14 +113,12 @@ const createApplicaton = async (req, res, next) => {
     diploma: [{ imageUrl: req.files.diploma[0].path }],
     transcript: [{ imageUrl: req.files.transcript[0].path }],
   });
-
+  console.log("Applicant fro create123333", typeof applicant1)
   // console.log("Applicatant:.......", applicant);
-
-  const url = await applicant.id;
-
+  const url = await applicant1.id;
   try {
     await sendEmail({
-      email: applicant.email,
+      email: applicant1.email,
       subject: "Regarding Applicaiton",
       message: `Dear applicant, Thank you for applying in this program. We will let you shortly about your application`,
     });
@@ -124,23 +126,23 @@ const createApplicaton = async (req, res, next) => {
     console.log(err);
     return next(new ErrorResponse("Email could not be sent", 500));
   }
-
-  const resetUrl = `${req.protocol}://${req.get("host")}/application/${
-    applicant.id
+  const Url = `${req.protocol}://${req.get("host")}/application/${
+    applicant1.id
   }`;
 
   try {
     await sendEmail({
       email: "mohiu2919@gmail.com",
       subject: "New Applicantion!",
-      message: `Dear Authority, ${applicant.first_name} has applied from ${applicant.country_of_residence}. Please click here to see full application: n\n\ ${resetUrl}`,
+      message: `Dear Authority, ${applicant1.first_name} has applied from ${applicant1.country_of_residence}. Please click here to see full application: n\n\ ${Url}`,
     });
   } catch (err) {
     console.log(err);
     return next(new ErrorResponse("Email could not be sent", 500));
   }
-  res.render("thank");
-  // res.send(applicant);
+
+  res.render("thank", {applicant1});
+  // res.render(applicant);
 };
 
 // Approve Block
@@ -185,6 +187,14 @@ const deleteApplication = async (req, res) => {
   await Application.findByIdAndDelete(id);
   res.redirect("/applications");
 };
+const applicantInfo = () => {
+  try {
+    console.log("Applicant fro create", applicant1)
+  } catch (error) {
+    console.log("error")
+  }
+  return applicant1;
+}
 
 module.exports = {
   getApplicationById,
@@ -192,4 +202,5 @@ module.exports = {
   getAllApplication,
   approve,
   deleteApplication,
+  applicantInfo
 };
