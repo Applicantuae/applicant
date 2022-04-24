@@ -183,18 +183,12 @@ const approve = async (req, res, next) => {
 };
 
 const deleteApplication = async (req, res) => {
+  console.log("Delete")
   const { id } = req.params;
   await Application.findByIdAndDelete(id);
   res.redirect("/applications");
 };
-const applicantInfo = () => {
-  try {
-    console.log("Applicant fro create", applicant1)
-  } catch (error) {
-    console.log("error")
-  }
-  return applicant1;
-}
+
 
 module.exports = {
   getApplicationById,
@@ -202,5 +196,4 @@ module.exports = {
   getAllApplication,
   approve,
   deleteApplication,
-  applicantInfo
 };
