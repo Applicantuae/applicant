@@ -83,9 +83,9 @@ const createApplicaton = async (req, res, next) => {
 
   const findEmail = await Application.findOne({ email });
 
-  // if (findEmail) {
-  //   return next(new ErrorResponse("Your email is registered", 400));
-  // }
+  if (findEmail) {
+    return next(new ErrorResponse("Your email is registered", 400));
+  }
   applicant1 = await Application.create({
     first_name,
     last_name,
