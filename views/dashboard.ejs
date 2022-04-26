@@ -7,7 +7,7 @@
 
     .Approved {
       background-color: #4dffff !important;
-      color: antiquewhite;
+      color: black;
       text-align: center;
 
     }
@@ -80,15 +80,24 @@
 
 
                   <td class="border border-success">
-                    <%= student.createAt.toLocaleDateString() %>
+                    <%  const d = () => {
+                      let c = student.createAt.toDateString()
+                      return c
+                }
+                   
+                %> 
+               <%= d() %> 
 
                   </td>
                   <td class="border border-success">
-
-                    <%= student.createAt.toLocaleTimeString() %>
+                   <% const utc = () => {
+                     let dat = new Date(student.createAt)
+                     dat= dat.toLocaleTimeString()
+                     return dat
+                   } %> 
+                       
+                   <%= utc() %> 
                   </td>
-
-
 
                   <td class="border border-success">
                     <form action="/delete/<%= student._id%>%>?_method=DELETE" method="POST">

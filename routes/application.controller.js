@@ -14,6 +14,10 @@ const getAllApplication = async (req, res, next) => {
       new ErrorResponse(`Applicant not found with the name of :`, 404)
     );
   }
+
+  console.log(applicant[0].createdAt);
+  // console.log(typeof applicant.createdAt);
+
   res.render("dashboard", { applicant });
 };
 
@@ -50,9 +54,7 @@ const getApplicationById = async (req, res, next) => {
 };
 
 // ===============================================================================================
-let applicant1
-
-
+let applicant1;
 
 // Create Application
 const createApplicaton = async (req, res, next) => {
@@ -113,7 +115,7 @@ const createApplicaton = async (req, res, next) => {
     diploma: [{ imageUrl: req.files.diploma[0].path }],
     transcript: [{ imageUrl: req.files.transcript[0].path }],
   });
-  console.log("Applicant fro create123333", typeof applicant1)
+  console.log("Applicant fro create123333", typeof applicant1);
   // console.log("Applicatant:.......", applicant);
   const url = await applicant1.id;
   try {
@@ -141,7 +143,7 @@ const createApplicaton = async (req, res, next) => {
     return next(new ErrorResponse("Email could not be sent", 500));
   }
 
-  res.render("thank", {applicant1});
+  res.render("thank", { applicant1 });
   // res.render(applicant);
 };
 
@@ -183,12 +185,11 @@ const approve = async (req, res, next) => {
 };
 
 const deleteApplication = async (req, res) => {
-  console.log("Delete")
+  console.log("Delete");
   const { id } = req.params;
   await Application.findByIdAndDelete(id);
   res.redirect("/applications");
 };
-
 
 module.exports = {
   getApplicationById,
