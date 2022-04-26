@@ -80,24 +80,26 @@
 
 
                   <td class="border border-success">
-                    <%  const d = () => {
+                    <% const d=()=> {
                       let c = student.createAt.toDateString()
                       return c
-                }
-                   
-                %> 
-               <%= d() %> 
+                      }
+
+                      %>
+                      <%= d() %>
 
                   </td>
                   <td class="border border-success">
-                   <% const utc = () => {
-                     let dat = new Date(student.createAt)
-                    //  dat= dat.toLocaleTimeString()
-                     console.log(dat)
-                     return dat
-                   } %> 
-                       
-                   <%= utc() %> 
+                    <% const utc=()=> {
+                      var dt = student.createAt;
+                      let dat = dt.setHours( dt.getHours() + 4 );
+                      let newdate = new Date(dat)
+                      let dfinale = newdate.toLocaleTimeString()
+                      console.log(dfinale)
+                      return dfinale
+                      } %>
+
+                      <%= utc() %>
                   </td>
 
                   <td class="border border-success">
