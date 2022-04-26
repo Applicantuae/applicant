@@ -2,7 +2,7 @@
 <script src="/protect.js"></script>  
   <style>
     .a {
-      background-color: rgba(0, 255, 132, 0.306);
+      background-color:#F5ECEB;
     }
 
     .Approved {
@@ -22,6 +22,12 @@
       background-color: #ff0000 !important;
       text-align: center;
     }
+    .thead{
+      background-color: #D7D3D2;
+    }  
+    .trbody{
+      background-color:#F5ECEB;
+    } 
   </style>
 
   <div style="text-align: center;">
@@ -31,7 +37,7 @@
   <div class="a row rounded">
     <div class="border border-success">
       <table class="table p-0 border border-success">
-        <thead style="background-color: aqua;" class="border border-success">
+        <thead class="thead"; class="border border-success">
           <tr class="border border-success">
             <th class="idd col border border-success" class="border_a">Id</th>
             <th scope="col border border-success" class="border_a">Name</th>
@@ -46,7 +52,7 @@
           <% for(let student of applicant) {%>
 
             <h6 class="text-dark .bg-white">
-              <tr class="border border-success" style="background-color: yellow;">
+              <tr class="border border-success trbody">
                 <td class="border border-success idd">
                   <%= student.id %>
                 </td>
