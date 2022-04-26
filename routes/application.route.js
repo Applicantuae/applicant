@@ -18,6 +18,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/applications", getAllApplication);
+router.get("/login", (req, res) => {
+  res.render("index")
+});
 router.get("/application/:id", getApplicationById);
 router.post("/application/approve/:id", approve);
 
