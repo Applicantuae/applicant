@@ -1,292 +1,325 @@
 <% layout('layouts/boilerplate') %>
-<script src="/protect.js"></script>  
-    <div style="background-color: rgb(13, 171, 182) ; margin: auto;
-border: 3px solid green;
-padding: 0px;" class="col-lg-8 col-xs-12 col-centered rounded mb-2">
+    <script src="/protect.js"></script>
+    <style>
+        .bradius {
+            border-radius: 3px solid black;
+            border: 1px solid black;
+        }
+    </style>
+    <div style="background-color:  white ; margin: auto;
+border-radius: 3px;
+padding: 0px;" class="col-lg-8 col-xs-12 col-centered mb-2">
 
         <div class="p-2 text-dark">
             <h4 class="mt-2">Application of
                 <%= applicant.first_name %>
             </h4>
 
-            <div class="">
+
+            <div class="row">
+
+
+
+
+
                 <div class="form-row">
-                    <div class="form-group bg-light rounded p-2">
-                        <h6><b> Name :</b></h6>
-                        <%= applicant.first_name %>
+                    <div class="row bradius">
+                        <div class="form-group bg-light col-md-6">
+                            <h6><b> Name :</b></h6>
+                            <%= applicant.first_name %>
+                        </div>
+                        <div class="form-group bg-light mt-1 col-md-6">
+                            <h6><b>Last Name:</b></h6>
+                            <%= applicant.last_name %>
+                        </div>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Last Name:</b></h6>
-                        <%= applicant.last_name %>
-                    </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Gender :</b></h6>
-                        <%= applicant.gender %>
+                    <div class="row bradius  mt-1">
+
+                        <div class="form-group bg-light col-md-6">
+                            <h6><b>Gender :</b></h6>
+                            <%= applicant.gender %>
+                        </div>
+
+                        <div class="form-group bg-light col-md-6">
+                            <h6><b>Mobile Phone :</b></h6>
+
+                            <%= applicant.mobile_phone %>
+                        </div>
                     </div>
 
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Mobile Phone :</b></h6>
+                    <div class="row bradius mt-1 ">
+                        <div class="form-group bg-light col-md-6">
+                            <h6><b>Email :</b></h6>
 
-                        <%= applicant.mobile_phone %>
-                    </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Email :</b></h6>
-                        <%= applicant.email %>
+                            <%= applicant.email %>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
 
             <h4 class="pl-2 mt-2">Profile Details</h4>
             <div class="submit-section">
-                <div class="form-row">
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                <div class="row bradius">
+                    <div class="form-group bg-light mt-1 p-2 col-md-6">
                         <h6><b>Mother Name :</b></h6>
                         <%= applicant.mother_name %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light mt-1 p-2 col-md-6 border-left border-dark">
                         <h6><b>Father Name :</b></h6>
                         <%= applicant.father_name %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                </div>
+
+                <div class="row bradius mt-1">
+
+                    <div class="form-group bg-light p-2  col-md-6">
                         <h6><b>Birth Date :</b></h6>
                         <%= applicant.birth_date %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light p-2  col-md-6">
                         <h6><b>Country of birth :</b></h6>
                         <%= applicant.country_of_birth %>
 
                             <img src="/country/flag-of-<%= applicant.country_of_birth %>.png" height="50px" width="50px"
-                                title="<%= applicant.country_of_birth %>" class="rounded" />
-
-
+                                title="<%= applicant.country_of_birth %>" class="bradius" />
 
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                </div>
+
+                <div class="row mt-1 bradius">
+
+                    <div class="form-group bg-light mt-1  p-2  col-md-6">
                         <h6><b>Nationality :</b></h6>
                         <%= applicant.nationality %>
 
-                            <img src="/country/flag-of-<%= applicant.nationality %>.png" class="rounded mr-2"
+                            <img src="/country/flag-of-<%= applicant.nationality %>.png" class="bradius mr-2"
                                 height="50px" width="50px" title="<%= applicant.nationality %>" />
 
-
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light p-2 col-md-6">
                         <h6><b>City of residence :</b></h6>
                         <%= applicant.city_of_residence %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                </div>
+
+                <div class="row mt-1 bradius">
+                    <div class="form-group bg-light p-2 col-md-6">
                         <h6><b>Whatsapp Number :</b></h6>
                         <%= applicant.whatsapp_number %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light p-2 col-md-6">
                         <h6><b>Address :</b></h6>
                         <%= applicant.address %>
                     </div>
                 </div>
-            </div>
 
-            <h4 class="pl-2 mt-2">Educational Information :</b></h4>
-            <div class="submit-section">
-                <div class="form-row">
-                    <div class="form-group bg-light mt-1 rounded p-2">
+
+
+            </div>
+        </div>
+
+        <h4 class="pl-2 mt-2">Educational Information :</b></h4>
+        <div class="submit-section">
+            <div class="form-row">
+                <div class="row mt-1 bradius">
+                    <div class="form-group bg-light p-2 col-md-6">
                         <h6><b>University :</b></h6>
                         <%= applicant.s1 %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light  p-2 col-md-6">
                         <h6><b>Degree type :</b></h6>
                         <%= applicant.s2 %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                </div>
+                <div class="row mt-1 bradius">
+                    <div class="form-group bg-light  p-2 col-md-6">
                         <h6><b>Language :</b></h6>
                         <%= applicant.s4 %>
                     </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
+                    <div class="form-group bg-light  p-2 col-md-6">
                         <h6><b>Major :</b></h6>
                         <%= applicant.s3 %>
                     </div>
                 </div>
             </div>
-            <h4 class="pl-2 mt-2">Passport Information :</b></h4>
-            <div class="submit-section">
-                <div class="form-row">
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Passport date of issue :</b></h6>
-                        <%= applicant.passport_date_of_issue %>
-                    </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Passport Number :</b></h6>
-                        <%= applicant.passport_number %>
-                    </div>
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Passport date of expire :</b></h6>
-                        <%= applicant.passport_date_of_expire %>
-                    </div>
-                </div>
+        </div>
+        <h4 class="pl-2 mt-2">Passport Information :</b></h4>
+
+        <div class="row mt-1 bradius">
+            <div class="form-group bg-light p-2 col-md-6">
+                <h6><b>Passport date of issue :</b></h6>
+                <%= applicant.passport_date_of_issue %>
+            </div>
+            <div class="form-group bg-light p-2 col-md-6">
+                <h6><b>Passport Number :</b></h6>
+                <%= applicant.passport_number %>
+            </div>
+        </div>
+
+        <div class="row mt-1 bradius">
+            <div class="form-group bg-light mt-1 p-2 col-md-6">
+                <h6><b>Passport date of expire :</b></h6>
+                <%= applicant.passport_date_of_expire %>
             </div>
 
-
-            <div class="submit-section">
-
-
-                <div class="form-row">
-
-                    <div class="form-group bg-light mt-1 rounded p-2">
-                        <h6><b>Passport date of issue :</b></h6>
-                        <%= applicant.passport_date_of_issue %>
-                    </div>
-
-                    <div class="form-group col-md-6 mt-1 rounded p-2">
-                        <h6><b>Applicant Image</b></h6>
-
-                        <% const getUrl=()=>{
-                            let url = applicant.profile_picture[0].imageUrl
-                            // console.log("profile_picture", url)
-                            let splt = url.split(".")
-                            // console.log("split", splt[3])
-                            let format = splt[3]
-                            let tag;
-                            if(format === "pdf"){
-                            tag = "embed"
-                            // console.log("pdf", tag)
-                            } else {
-                            tag = "img"
-                            // console.log("imge", tag)
-                            }
-                            return tag;
-                            }
-                            %>
-
-
-
-                            <<%= getUrl() %> src=<%=applicant.profile_picture[0].imageUrl %> type="application/pdf"
-                                    width= "450" height= "450" />
-
-                    </div>
-                    <div class="form-group col-md-6 mt-1 rounded p-2">
-                        <h6><b>Passport :</b></h6>
-
-                        <% const getPassportUrl=()=>{
-                            let url = applicant.passport[0].imageUrl
-                            // console.log("passport url", url)
-                            let splt = url.split(".")
-                            // console.log("split", splt[3])
-                            let format = splt[3]
-                            // console.log("passport format", format)
-
-                            let tag;
-                            if(format === "pdf"){
-                            tag = "embed"
-                            // console.log("passport pdf", tag)
-                            } else {
-                            tag = "img"
-                            // console.log("passport imge", tag)
-                            }
-                            return tag;
-                            }
-                            %>
-
-                            <%= getPassportUrl() %> src=<%=applicant.passport[0].imageUrl %> type="application/pdf"
-                                    style="width:718px; height:700px; />
-
-                    </div>
-                    <div class="form-group col-md-6 mt-1 rounded p-2">
-                        <h6><b>Diploma :</b></h6>
-
-                        <% const getDiplomatUrl=()=>{
-                            let url = applicant.diploma[0].imageUrl
-                            let splt = url.split(".")
-                            // console.log("split", splt[3])
-                            let format = splt[3]
-                            let tag;
-                            if(format === "pdf"){
-                            tag = "embed"
-                            // console.log("pdf", tag)
-                            } else {
-                            tag = "img"
-                            // console.log("imge", tag)
-                            }
-                            return tag;
-                            }
-                            %>
-                            <<%= getDiplomatUrl() %> src=<%=applicant.diploma[0].imageUrl %> type="application/pdf"
-                                    style="width:718px; height:700px; />
-
-                                  
-                    </div>
-
-
-
-                    <div class="form-group col-md-6 mt-1 rounded p-2">
-                        <h6><b>Transcript :</b></h6>
-                        <% const getTranscriptUrl=()=>{
-                            let url = applicant.transcript[0].imageUrl
-                            let splt = url.split(".")
-                            // console.log("split", splt[3])
-                            let format = splt[3]
-                            let tag;
-                            if(format === "pdf"){
-                            tag = "embed"
-                            // console.log("pdf", tag)
-                            } else {
-                            tag = "img"
-                            // console.log("imge", tag)
-                            }
-                            return tag;
-                            }
-                            %>
-                            <<%= getTranscriptUrl() %> src=<%=applicant.transcript[0].imageUrl %> type="application/pdf"
-                                    style="width:718px; height:700px;/>
-
-                    </div>
-
-                </div>
+            <div class="form-group bg-light mt-1 p-2 col-md-6">
+                <h6><b>Passport date of issue :</b></h6>
+                <%= applicant.passport_date_of_issue %>
             </div>
+        </div>
 
+        <div class=" row form-group col-12 mt-1 bradius p-2">
+            <h6><b>Applicant Image</b></h6>
+
+            <% const getUrl=()=>{
+                let url = applicant.profile_picture[0].imageUrl
+                // console.log("profile_picture", url)
+                let splt = url.split(".")
+                // console.log("split", splt[3])
+                let format = splt[3]
+                let tag;
+                if(format === "pdf"){
+                tag = "embed"
+                // console.log("pdf", tag)
+                } else {
+                tag = "img"
+                // console.log("imge", tag)
+                }
+                return tag;
+                }
+                %>
+
+
+
+
+                <<%= getUrl() %> src=<%=applicant.profile_picture[0].imageUrl %>
+                        type="application/pdf"
+                        width= "450" height= "450" />
+
+        </div>
+        <div class="row col-12 mt-1 bradius p-2">
+            <h6><b>Passport :</b></h6>
+
+            <% const getPassportUrl=()=>{
+                let url = applicant.passport[0].imageUrl
+                // console.log("passport url", url)
+                let splt = url.split(".")
+                // console.log("split", splt[3])
+                let format = splt[3]
+                // console.log("passport format", format)
+
+                let tag;
+                if(format === "pdf"){
+                tag = "embed"
+                // console.log("passport pdf", tag)
+                } else {
+                tag = "img"
+                // console.log("passport imge", tag)
+                }
+                return tag;
+                }
+                %>
+
+                <<%= getPassportUrl() %> src=<%=applicant.passport[0].imageUrl %>
+                        type="application/pdf"
+                        style="width:718px; height:700px; />>
+
+        </div>
+        <div class="row col-12 mt-1 bradius p-2">
+            <h6><b>Diploma :</b></h6>
+
+            <% const getDiplomatUrl=()=>{
+                let url = applicant.diploma[0].imageUrl
+                let splt = url.split(".")
+                // console.log("split", splt[3])
+                let format = splt[3]
+                let tag;
+                if(format === "pdf"){
+                tag = "embed"
+                // console.log("pdf", tag)
+                } else {
+                tag = "img"
+                // console.log("imge", tag)
+                }
+                return tag;
+                }
+                %>
+                <<%= getDiplomatUrl() %> src=<%=applicant.diploma[0].imageUrl %>
+                        type="application/pdf"
+                        style="width:718px; height:700px; />
 
 
         </div>
 
+
+
+        <div class="row col-12 mt-1 bradius p-2">
+            <h6><b>Transcript :</b></h6>
+            <% const getTranscriptUrl=()=>{
+                let url = applicant.transcript[0].imageUrl
+                let splt = url.split(".")
+                // console.log("split", splt[3])
+                let format = splt[3]
+                let tag;
+                if(format === "pdf"){
+                tag = "embed"
+                // console.log("pdf", tag)
+                } else {
+                tag = "img"
+                // console.log("imge", tag)
+                }
+                return tag;
+                }
+                %>
+                <<%= getTranscriptUrl() %> src=<%=applicant.transcript[0].imageUrl %>
+                        type="application/pdf"
+                        style="width:718px; height:700px;/>
+
+        </div>
+    </div>
+    </div>
+    </div>
     </div>
 
+
+    <div class="row">
+
+
+        <% if (sts==="pending" ) { %>
+            <h6 class="m-2 bg-info bradius">
+                <table cellpadding="0" cellspacing="0" class="m-2">
+                    <tr>
+                        <td>
+                            <form action="/application/approve/<%= applicant.id %>" method="post"
+                                style="padding: 0; margin: 0">
+
+                                <input type="hidden" name="status" value="Approved">
+                                <button class="btn btn-success">Approved!</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/application/approve/<%= applicant.id %> " method="post"
+                                style="padding: 0; margin: 0">
+                                <input type="hidden" name="status" value="Rejected">
+                                <button class="btn btn-danger m-2">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </h6>
+
+            <% } else {%>
+
+
+                <div>
+                    <button class="btn btn-danger disabled">
+                        <%= applicant.approve[0].status %>
+                    </button>
+                </div>
+
+
+                <% } %>
     </div>
-
-
-    <% if (sts === "pending") { %>
-        <h6 class="m-2 bg-info rounded">
-            <table cellpadding="0" cellspacing="0" class="m-2">
-                <tr>
-                    <td>
-                        <form action="/application/approve/<%= applicant.id %>" method="post"
-                            style="padding: 0; margin: 0">
-    
-                            <input type="hidden" name="status" value="Approved">
-                            <button class="btn btn-success">Approved!</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/application/approve/<%= applicant.id %> " method="post"
-                            style="padding: 0; margin: 0">
-                            <input type="hidden" name="status" value="Rejected">
-                            <button class="btn btn-danger m-2">Reject</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </h6>
-        
-    
-        
-        <% } else {%>
-            
-            
-            <button class="btn btn-danger m-2">  </button>
-            <h1><button class="btn btn-light m-2"> <%= applicant.approve[0].status %> </button></h1> 
-            
-         
-        <% } %> 
-        
-
-     
-
-
-
